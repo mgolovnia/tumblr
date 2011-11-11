@@ -1,0 +1,20 @@
+{
+   "meta": {
+      "status": 200,
+      "msg": "OK"
+   },
+   "response": {
+      "posts": [
+         {
+            "blog_name": "blog1",
+            "id": 123,
+            "post_url": "http:\/\/links.blog1.com\/post\/123"
+         },
+         {
+            "blog_name": "blog2",
+            "id": 456,
+            "post_url": "http:\/\/links.blog2.com\/post\/456"
+         }
+      ]
+   }
+}

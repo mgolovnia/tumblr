@@ -1,0 +1,40 @@
+{
+   "meta": {
+      "status": 200,
+      "msg": "OK"
+   },
+   "response": {
+      "liked_post": [
+         {
+            "blog_name": "blog1",
+            "id": 3507845453,
+            "post_url": "http:\/\/blog1.tumblr.com\/post\/3507845453",
+            "type": "text",
+            "date": "2011-02-25 20:27:00 GMT",
+            "timestamp": 1298665620,
+            "format": "html",
+            "reblog_key": "b0baQtsl",
+            "tags": ["tumblrize","milky dog","mini comic"],
+            "note_count": 14,
+            "title": "Milky Dog",
+            "body": "Text"
+         },
+        {
+            "blog_name": "blog2",
+            "id": 3507845453,
+            "post_url": "http:\/\/blog2.tumblr.com\/post\/3507845453",
+            "type": "text",
+            "date": "2011-02-25 20:27:00 GMT",
+            "timestamp": 1298665620,
+            "format": "html",
+            "reblog_key": "b0baQtsl",
+            "tags": ["tumblrize","milky dog","mini comic"],
+            "note_count": 14,
+            "title": "Milky Dog",
+            "body": "Text"
+         }
+
+      ],
+      "liked_count": 2
+   }
+}

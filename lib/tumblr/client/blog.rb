@@ -7,7 +7,7 @@ module Tumblr
        
       def blog_info(base_hostname, params={})
         params.merge!("api_key" => consumer_key)
-        get build_query("/#{API_VERSION}/blog/#{base_hostname}/info", params) 
+        get "/#{API_VERSION}/blog/#{base_hostname}/info", params 
       end
 
       def avatar(base_hostname, params={})
@@ -15,12 +15,12 @@ module Tumblr
       end
 
       def followers(base_hostname, params={})
-        get build_query("/#{API_VERSION}/blog/#{base_hostname}/followers", params)
+        get "/#{API_VERSION}/blog/#{base_hostname}/followers", params
       end
 
       def posts(base_hostname, params={})
         params.merge!("api_key" => consumer_key)
-        get build_query("/#{API_VERSION}/blog/#{base_hostname}/posts/#{params.delete("type")}",params)
+        get "/#{API_VERSION}/blog/#{base_hostname}/posts/#{params.delete("type")}",params
       end
 
       def queue(base_hostname, params={})
@@ -57,7 +57,6 @@ module Tumblr
       def link(base_hostname, params={})
         check_required_params %w(url), params
         params.merge!({"type" => "link"})
-
         post "/#{API_VERSION}/blog/#{base_hostname}/post", params
       end
 
@@ -83,17 +82,17 @@ module Tumblr
 
       def edit(base_hostname, params={})
         check_required_params %w(id), params
-        post "/#{API_VERSION}/blog/#{base_hostname}/post/edit"
+        post "/#{API_VERSION}/blog/#{base_hostname}/post/edit", params
       end
 
       def reblog(base_hostname, params={})
         check_required_params %w(id reblog_key), params
-        post "/#{API_VERSION}/blog/#{base_hostname}/post/reblog"
+        post "/#{API_VERSION}/blog/#{base_hostname}/post/reblog", params
       end
 
       def delete_post(base_hostname, params={})
         check_required_params %w( id), params
-        post "/#{API_VERSION}/blog/#{base_hostname}/post/delete"
+        post "/#{API_VERSION}/blog/#{base_hostname}/post/delete", params
       end
 
       private
@@ -104,11 +103,6 @@ module Tumblr
         end
       end          
 
-      def build_query(base, params={})
-        return base if params.empty?
-        "#{base}?#{Rack::Utils.build_query(params)}"
-      end
-      
     end
   end
 end

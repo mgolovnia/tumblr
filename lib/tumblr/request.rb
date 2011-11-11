@@ -1,11 +1,12 @@
 require 'hashie/mash'
 require 'json'
+require 'rack'
 
 module Tumblr
   module Request
   
-    def get(path)
-      make_request(:get, path)
+    def get(path,params={})
+      make_request(:get, build_query(path, params))
     end
     
     def post(path, *params)
@@ -21,6 +22,12 @@ module Tumblr
     end
 
     private
+
+    def build_query(base, params={})
+      return base if params.empty?
+      "#{base}?#{Rack::Utils.build_query(params)}"
+    end
+
 
     def make_request(method, path, *params)
       response = connection.request(method, path, *params)
