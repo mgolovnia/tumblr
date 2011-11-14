@@ -20,7 +20,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/info/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/info/}.returns('')
         client.blog_info('test.tumblr.com')
       end
     end
@@ -43,7 +43,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/avatar/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/avatar/}.returns('')
         client.avatar('test.tumblr.com')
       end
     end
@@ -65,7 +65,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/followers/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/followers/}.returns('')
         client.followers('test.tumblr.com')
       end
     end
@@ -89,7 +89,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/posts/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/posts/}.returns('')
         client.posts('test.tumblr.com')
       end
     end
@@ -110,7 +110,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/posts\/queue/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/posts\/queue/}.returns('')
         client.queue('test.tumblr.com')
       end
     end
@@ -131,7 +131,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/posts\/draft/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/posts\/draft/}.returns('')
         client.drafts('test.tumblr.com')
       end
     end
@@ -152,7 +152,7 @@ describe Tumblr::Client::Blog do
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:get).returns('')
-        client.expects(:get).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/posts\/submission/}.returns('')
+        client.expects(:get).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/posts\/submission/}.returns('')
         client.submissions('test.tumblr.com')
       end
     end
@@ -166,14 +166,10 @@ describe Tumblr::Client::Blog do
   
   describe "#text" do
     
-    context "missing required params" do
-      it{ expect {client.text('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
         client.text('test.tumblr.com', "body" => "test")
       end
     end
@@ -182,14 +178,10 @@ describe Tumblr::Client::Blog do
 
   describe "#photo" do
     
-    context "missing required params" do
-      it{ expect {client.photo('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
         client.photo('test.tumblr.com', "source" => "http://test.com/image.jpg")
       end
     end
@@ -198,29 +190,21 @@ describe Tumblr::Client::Blog do
 
   describe "#quote" do
   
-    context "missing required params" do
-      it{ expect {client.quote('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
-        client.quote('test.tumblr.com', "quote" => "Test")
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.quote('test.tumblr.com', "Test")
       end
     end
   end
 
   describe "#link" do
 
-    context "missing required params" do
-      it{ expect {client.link('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
         client.link('test.tumblr.com', "url" => "Test")
       end
     end
@@ -229,14 +213,10 @@ describe Tumblr::Client::Blog do
   
   describe "#chat" do
     
-    context "missing required params" do
-      it{ expect {client.chat('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
         client.chat('test.tumblr.com', "conversation" => "Test")
       end
     end
@@ -244,15 +224,11 @@ describe Tumblr::Client::Blog do
 
   describe "#audio" do
   
-    context "missing required params" do
-      it{ expect {client.audio('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
-        client.audio('test.tumblr.com', "external_url" => "http://test.com/test.mp3")
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.audio('test.tumblr.com',  "http://test.com/test.mp3")
       end
     end
 
@@ -260,15 +236,11 @@ describe Tumblr::Client::Blog do
 
   describe "#video" do
 
-    context "missing required params" do
-      it{ expect {client.video('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
-        client.video('test.tumblr.com', "embed" => "embed")
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post/}.returns('')
+        client.video('test.tumblr.com', "embed")
       end
     end
 
@@ -276,15 +248,11 @@ describe Tumblr::Client::Blog do
 
   describe "#edit" do
     
-    context "missing required params" do
-      it{ expect {client.edit('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post\/edit/}.returns('')
-        client.edit('test.tumblr.com', "id" => "123")
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post\/edit/}.returns('')
+        client.edit('test.tumblr.com', 123)
       end
     end
     
@@ -292,15 +260,11 @@ describe Tumblr::Client::Blog do
 
   describe "#reblog" do
   
-    context "missing required params" do
-      it{ expect {client.reblog('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post\/reblog/}.returns('')
-        client.reblog('test.tumblr.com', "reblog_key" => "123", "id" => "456")
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post\/reblog/}.returns('')
+        client.reblog('test.tumblr.com', "123", 456)
       end
     end
 
@@ -308,14 +272,10 @@ describe Tumblr::Client::Blog do
 
   describe "#delete_post" do
 
-    context "missing required params" do
-      it{ expect {client.delete_post('test.tumblr.com')}.to raise_error(Tumblr::Error::MissingRequiredParameterError)}
-    end
-
     context "making request" do
       it "should make request to correct url" do
         client.stubs(:post).returns('')
-        client.expects(:post).with{ |arg| arg =~ /\/blog\/test\.tumblr\.com\/post\/delete/}.returns('')
+        client.expects(:post).with{ |url| url =~ /\/blog\/test\.tumblr\.com\/post\/delete/}.returns('')
         client.delete_post('test.tumblr.com', "id" => "456")
       end
     end
