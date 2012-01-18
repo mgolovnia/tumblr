@@ -4,10 +4,10 @@ A Ruby wrapper for Tumblr API. Highly inspired by Twitter gem.
 
 == Installation
 You can use latest gem:
-  gem install tumblr
+  gem install tumblr-ruby
 
 or in Gemfile:
-  gem 'tumblr'
+  gem 'tumblr-ruby'
 
 == Usage
   client = Tumblr::Client.new do |client|

@@ -14,11 +14,11 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "tumblr"
+  gem.name = "tumblr-ruby"
   gem.homepage = "http://github.com/mgolovnia/tumblr"
   gem.license = "MIT"
-  gem.summary = %Q{A Ruby wrapper for Tumblr REST API}
-  gem.description = %Q{A Ruby wrapper for Tumblr REST API}
+  gem.summary = %Q{A Ruby wrapper for Tumblr API}
+  gem.description = %Q{A Ruby wrapper for Tumblr  API}
   gem.email = "mgolovnia@gmail.com"
   gem.authors = ["Max Golovnia"]
   # dependencies defined in Gemfile
