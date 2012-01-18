@@ -1,6 +1,33 @@
 = tumblr
 
-Description goes here.
+A Ruby wrapper for Tumblr API. Highly inspired by Twitter gem.
+
+== Installation
+You can use latest gem:
+  gem install tumblr
+
+or in Gemfile:
+  gem 'tumblr'
+
+== Usage
+  client = Tumblr::Client.new do |client|
+    client.consumer_key = your_consumer_key
+    client.consumer_secret = your_consumer_secret
+    client.oauth_token = your_oauth_token
+    client.oauth_token_secret = oauth_token_secret
+  end
+
+Return posts from a blog
+  client.posts("example.tumblr.com")
+
+Create text post
+  client.text("example.tumblr.com", "Hello, World!")
+
+Return user's account information
+  client.user_info
+
+Use this method to retrieve the dashboard
+  client.dashboard
 
 == Contributing to tumblr
  
